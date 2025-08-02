@@ -1,0 +1,138 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 5% 96%; /* Light Gray */
+    --foreground: 240 10% 3.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    
+    --primary: 100 60% 45%; /* Lime Green */
+    --primary-foreground: 100 30% 10%;
+    
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 100 60% 45%; /* Lime Green for focus rings */
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-foreground;
+  }
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+}
+
+.leaflet-container {
+    height: 400px;
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+/* Custom highlighting for Buyer rows */
+.row-on-payment-plan {
+  background-color: #fef9c3; /* yellow-100 */
+}
+.row-on-payment-plan:hover {
+  background-color: #fef08a; /* yellow-200 */
+}
+
+.row-paid-in-full {
+  background-color: #dcfce7; /* green-100 */
+}
+.row-paid-in-full:hover {
+  background-color: #bbf7d0; /* green-200 */
+}
+
+.row-selected {
+  --tw-ring-color: hsl(var(--primary));
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+
+/* FullCalendar Customizations */
+.fc {
+  --fc-border-color: hsl(var(--border));
+  --fc-daygrid-event-dot-width: 8px;
+  --fc-list-event-dot-width: 10px;
+  --fc-list-event-hover-bg-color: hsl(var(--accent));
+
+  /* Event colors are handled by classNames now */
+}
+
+.fc-event-main {
+  @apply px-2 py-1 text-xs font-semibold;
+}
+
+.event-puppy-pickup {
+  @apply bg-green-100 border-green-300 text-green-800;
+}
+.event-business-appointment {
+  @apply bg-purple-100 border-purple-300 text-purple-800;
+}
+.event-personal {
+  @apply bg-blue-100 border-blue-300 text-blue-800;
+}
+.event-overdue {
+  @apply bg-red-100 border-red-300 text-red-800;
+}
+
+
+.fc .fc-daygrid-day-frame {
+    @apply min-h-[120px];
+}
+
+.fc-day-today {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.fc-toolbar-title {
+  @apply text-lg font-bold text-foreground;
+}
+
+.fc .fc-button {
+  @apply bg-card text-foreground border-border hover:bg-accent;
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active, 
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.fc-daygrid-day.fc-day-other .fc-daygrid-day-top {
+    opacity: 0.5;
+}
